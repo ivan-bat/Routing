@@ -1,0 +1,48 @@
+.item-todo {
+  padding: 14px;
+  width: 450px;
+  margin: 0 auto;
+  text-align: left;
+  margin-top: 15px;
+  background: linear-gradient(
+    90deg,
+    rgb(163, 134, 226) 0%,
+    rgb(179, 182, 231) 100%
+  );
+  border: black;
+  color: #eeeded;
+}
+
+.item-edit {
+  display: inline-flex;
+  cursor: pointer;
+  float: right;
+  font-size: 15px;
+  left: -4px;
+  bottom: 5px;
+  background: none;
+  border: none;
+}
+
+.item-edit:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.item-delete {
+  display: inline-flex;
+  cursor: pointer;
+  float: right;
+  left: -4px;
+  bottom: 5px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: none;
+  border: none;
+}
+
+.item-delete:hover {
+  color: red;
+  cursor: pointer;
+}
