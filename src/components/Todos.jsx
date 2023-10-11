@@ -2,18 +2,19 @@ import React, { useState, useEffect } from "react";
 import "./todos.css";
 import TodoItem from "./TodoItem";
 import SearchBar from "./SearchBar";
+import Input from "./Input";
 import {
   getTodos,
   createTodo,
   deleteTodo,
   editTodo,
 } from "../crudOperations/crudOperations";
+import { Routes, Route, Link } from "react-router-dom";
 
-const TodoList = () => {
+export const TodoList = () => {
   const [todos, setTodos] = useState([]);
   const [item, setItem] = useState("");
   const [refreshTodosFlag, setRefreshTodosFlag] = useState(false);
-  const [isCreating, setIsCreating] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [search, setSearch] = useState("");
 
@@ -26,13 +27,14 @@ const TodoList = () => {
   }, [refreshTodosFlag]);
 
   const newItem = () => {
-    setIsCreating(true);
-    createTodo(item)
-      .then((response) => {
+    if (item.trim() === "") {
+      alert("Введите значение для добавления задачи");
+    } else {
+      createTodo(item).then((response) => {
         console.log("Задача добавлена, ответ от сервера", response);
         refreshTodos();
-      })
-      .finally(() => setIsCreating(false));
+      });
+    }
   };
 
   const deleteItem = (id) => {
@@ -52,31 +54,14 @@ const TodoList = () => {
     });
   };
 
-  const keyPress = (e) => {
-    const code = e.which;
-    if (code === 13) {
-      newItem();
-    }
-  };
-
   const filteredTodos = todos.filter((todo) => {
     return todo.name.toLowerCase().includes(search.toLowerCase());
   });
 
   return (
-    <div className="wrapper">
+    <div>
       <SearchBar setSearch={setSearch} />
-      <input
-        value={item}
-        className="input"
-        type="text"
-        placeholder="Enter something..."
-        onChange={(e) => setItem(e.target.value)}
-        onKeyPress={(e) => keyPress(e)}
-      />
-      <button disabled={isCreating} className="enter" onClick={newItem}>
-        ENTER
-      </button>
+      <Input item={item} setItem={setItem} newItem={newItem} />
       {filteredTodos.map(({ id, name }) => (
         <TodoItem
           key={id}
@@ -90,5 +75,3 @@ const TodoList = () => {
     </div>
   );
 };
-
-export default TodoList;

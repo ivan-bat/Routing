@@ -1,48 +1,47 @@
-.item-todo {
-  padding: 14px;
-  width: 450px;
-  margin: 0 auto;
-  text-align: left;
-  margin-top: 15px;
-  background: linear-gradient(
-    90deg,
-    rgb(163, 134, 226) 0%,
-    rgb(179, 182, 231) 100%
-  );
-  border: black;
-  color: #eeeded;
-}
-
-.item-edit {
-  display: inline-flex;
+.item {
+  list-style: none;
+  font-size: 17px;
+  padding: 12px 8px 12px 50px;
+  user-select: none;
   cursor: pointer;
-  float: right;
+  position: relative;
+}
+.item-delete {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  width: 40px;
+  height: 40px;
   font-size: 15px;
-  left: -4px;
-  bottom: 5px;
+  color: #d12f2f;
+  text-align: center;
+  line-height: 40px;
   background: none;
   border: none;
+  border-radius: 20px;
+}
+.item-delete:hover {
+  background: #edeef0;
+}
+.item-edit {
+  position: absolute;
+  right: 60px;
+  top: 5px;
+  width: 40px;
+  height: 40px;
+  font-size: 15px;
+  color: #070606;
+  text-align: center;
+  line-height: 20px;
+  background: none;
+  border: none;
+  border-radius: 20px;
 }
 
 .item-edit:hover {
-  color: white;
-  cursor: pointer;
+  background: #edeef0;
 }
-
-.item-delete {
-  display: inline-flex;
-  cursor: pointer;
-  float: right;
-  left: -4px;
-  bottom: 5px;
-  width: 20px;
-  height: 20px;
-  border: none;
-  background: none;
-  border: none;
-}
-
-.item-delete:hover {
-  color: red;
-  cursor: pointer;
+.item-edit img {
+  width: 30px;
+  margin-left: 10px;
 }
